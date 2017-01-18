@@ -153,12 +153,12 @@ prior to forking this repository.
 
 ### Original Authors
 * [Kyle Hundman](https://github.com/khundman)
+* [Simon Anuszczyk](https://github.jpl.nasa.gov/sanuszcz)
 * [Valentino Constantinou](https://github.com/vc1492a)
 * [Connor Francis](https://github.jpl.nasa.gov/cfrancis)
-* [Randy Moss](https://github.com/RandalMoss)
-* [Simon Anuszczyk](https://github.jpl.nasa.gov/sanuszcz)
-* Vince Woo
 * [Lini Mestar](https://github.com/lmEshoo)
+* [Randy Moss](https://github.com/RandalMoss)
+* [Vince Woo](https://github.com/vincewoo)
 
 ### Special thanks to these JPLers:
 * Thomas Berry
