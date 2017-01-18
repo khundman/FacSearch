@@ -157,6 +157,7 @@ prior to forking this repository.
 * [Connor Francis](https://github.jpl.nasa.gov/cfrancis)
 * [Randy Moss](https://github.com/RandalMoss)
 * [Simon Anuszczyk](https://github.jpl.nasa.gov/sanuszcz)
+* Vince Woo
 * [Lini Mestar](https://github.com/lmEshoo)
 
 ### Special thanks to these JPLers:
@@ -167,4 +168,5 @@ prior to forking this repository.
 * Pete Jones
 * Sonny Koliwad
 * Andrea Ollier
+* David Watkins
 * Tom Soderstrom
