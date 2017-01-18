@@ -8,8 +8,7 @@ Original `d3.floorplan.js` from [David Ciarletta](https://github.com/dciarletta/
 
 Milennium Falcon Demo (link: (coming soon)): 
 
-![home page](https://github.jpl.nasa.gov/Facilities-Allocation-Tool/facsearch/blob/open-source/blob/screenshots/home.png)
-<!-- ![home page](http://github.com/khundman/master/blob/screenshots/home.png) -->
+![home page](https://github.com/khundman/facsearch/blob/master/blob/screenshots/home.png)
 
 ## Motivation
 Space is a precious commodity at NASA's Jet Propulsion Laboratory (JPL). Limited spacial resources ensure that personnel, equipment, and material moves are considered at least on a weekly basis in order to facilitate ongoing work and research at the laboratory. The IT Data Science group has developed FacSearch to enable easy interpretation and understanding of space constraints, along with potential opportunities for moves that could improve organizational efficiency. This tool has also proven useful in providing administrative, maintenance and safety staff timely and relevant information. 
@@ -20,7 +19,7 @@ FacSearch addresses three primary use cases: the ability to easily search and lo
 ### Personnel Search
 Find people and visually represent their office's location on a floorplan.
 
-![person search](https://github.jpl.nasa.gov/Facilities-Allocation-Tool/facsearch/blob/open-source/blob/screenshots/person_search.png)
+![person search](https://github.com/khundman/facsearch/blob/master/blob/screenshots/person_search.png)
 <!-- ![home page](http://github.com/khundman/master/blob/screenshots/person_search.png) -->
 
 ### Advanced Search
@@ -37,19 +36,19 @@ Attributes are limited only by data availability. Additionally, the query result
 number and floor, or through a visual representation using a bar chart.
 
 The query area for the advanced search:
-![advanced search area](https://github.jpl.nasa.gov/Facilities-Allocation-Tool/facsearch/blob/open-source/blob/screenshots/advanced_search.png)
+![advanced search area](https://github.com/khundman/facsearch/blob/master/blob/screenshots/advanced_search.png)
 
 The default method of showing query results is through a grid. Each rectangle represents a building (or spacecraft) and floor number, with the number of results in the red circle.
-![grid results](https://github.jpl.nasa.gov/Facilities-Allocation-Tool/facsearch/blob/open-source/blob/screenshots/advanced_search_grid_results.png)
+![grid results](https://github.com/khundman/facsearch/blob/master/blob/screenshots/advanced_search_grid_results.png)
 
 Here, the query results are visualized as a bar chart, presenting the user with a data-driven method of navigation.
-![chart results](https://github.jpl.nasa.gov/Facilities-Allocation-Tool/facsearch/blob/open-source/blob/screenshots/advanced_search_chart_results.png)
+![chart results](https://github.com/khundman/facsearch/blob/master/blob/screenshots/advanced_search_chart_results.png)
 
 Once a user selects a particular result, the floorplan of that particular building and floor is displayed, along with 
 the results that match the user's query. The user can then hover over a room to view additional information, such as
 who that room is assigned to, square footage, the type of space, and other attributes:
 
-![query results](https://github.jpl.nasa.gov/Facilities-Allocation-Tool/facsearch/blob/open-source/blob/screenshots/advanced_search_query_results.png)
+![query results](https://github.com/khundman/facsearch/blob/master/blob/screenshots/advanced_search_query_results.png)
 
 Additional layers are available for floorplans as well:
 * Organization
@@ -60,13 +59,13 @@ Additional layers are available for floorplans as well:
 * CSV export of underlying data
 
 The floorplan view with the "Space Type" layer turned on:
-![space type](https://github.jpl.nasa.gov/Facilities-Allocation-Tool/facsearch/blob/open-source/blob/screenshots/advanced_search_space_type.png)
+![space type](https://github.com/khundman/facsearch/blob/master/blob/screenshots/advanced_search_space_type.png)
 
 ### Insights
 
 The insights page is a place to generate reports and provide insights as to how physical space is being used within each organization, such as the amount of square footage per person, the ratio of available space to unavailable space, the number of public and private conference rooms available, etc. Whereas the personnel search satisfies the need to easily locate an individual and the advanced search satisfies the need to quickly locate types of spaces by attribute, the goal for the insights page is to showcase areas of opportunity and suggest actions that will improve how efficiently space is being used across the lab:
 
-![space type](https://github.jpl.nasa.gov/Facilities-Allocation-Tool/facsearch/blob/open-source/blob/screenshots/org_insights.png)
+![space type](https://github.com/khundman/facsearch/blob/master/blob/screenshots/org_insights.png)
 
 ## Getting Started with the Demo
 Download and install [elasticsearch-2.4](https://www.elastic.co/downloads/past-releases/elasticsearch-2-4-0) </br></br>
