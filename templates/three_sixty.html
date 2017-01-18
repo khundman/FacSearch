@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>301-180</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pannellum.css') }}"/>
+    <script type="text/javascript" src="static/js/pannellum.js"></script>
+    <script src="static/data_sources/360_data.json"></script>
+    <style>
+    /*prevent the compass from displaying*/
+    .pnlm-compass {
+        display: none !important;
+        overflow-y:hidden;
+    }
+    #panorama {
+        height: 100vh;
+        overflow-y:hidden;
+    }
+    .pnlm-tooltip span {
+        white-space: pre-line;
+        /*for some reason text align isn't working*/
+        text-align: left;
+
+    }
+/*this should allow you to change the hotspot icon
+    .hotspot.info {
+        background: url(http://i.telegraph.co.uk/multimedia/archive/03491/Vladimir_Putin_1_3491835k.jpg);
+    }*/
+
+    </style>
+    
+   
+</head>
+<body>
+
+<div id="panorama"></div>
+<script>
+
+function load_360(building, room, scene){
+
+    pannellum.viewer('panorama', {
+        "type": "equirectangular",
+        "autoLoad": true,
+        /*
+         * Uncomment the next line to print the coordinates of mouse clicks
+         * to the browser's developer console, which makes it much easier
+         * to figure out where to place hot spots. Always remove it when
+         * finished, though.
+         */
+        "hotSpotDebug": true,
+        "default": {
+            "firstScene": building + "-" + room,
+            "sceneFadeDuration":1000
+        },
+        "scenes": three_sixty_data[scene]
+    })
+}
+
+scene = sessionStorage.getItem("scene");
+building = sessionStorage.getItem("building");
+room = sessionStorage.getItem("room");
+
+load_360(building, room, scene)
+
+</script>
+
+</body>
+</html>

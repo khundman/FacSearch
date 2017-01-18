@@ -1,0 +1,218 @@
+<!-- Copyright 2015, by the California Institute of Technology. ALL RIGHTS RESERVED. 
+United States Government Sponsorship acknowledged. Any commercial use must be negotiated with 
+the Office of Technology Transfer at the California Institute of Technology.
+This software may be subject to U.S. export control laws. By accepting this software, 
+the user agrees to comply with all applicable U.S. export laws and regulations. 
+User has the responsibility to obtain export licenses, or other export authority as may be 
+required before exporting such information to foreign countries or providing access to foreign persons. -->
+
+<!DOCTYPE html>
+<html ng-app="query">
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <title>Insights - FacSearch</title>
+
+        <!-- css -->
+        <link href="{{ url_for('static', filename='css/loading.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/jquery-ui.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
+
+        <!-- fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100,700' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
+
+        <!-- insights page specific nav margin, plus donut styles -->
+        <style>
+            body {
+                overflow-y: hidden;
+            }
+            nav {
+                margin-bottom: 0 !important;
+                border-radius: 0 !important;
+            }
+            .slide-leaflet {
+                height: 79px;
+            }
+            .arc text {
+                font: 1em 'Lato', sans-serif;
+                fill: #f8f8f8;
+                text-anchor: middle;
+            }
+            .arc path {
+                stroke: #fff;
+                stroke-width: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+    <div id="content">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <img style="width: 125px; margin-top: 7px; height: auto; float:left;" src="../static/images/jpl_logo.png">
+                <a href="/">
+                    <a class="navbar-brand navtitle" href="/">
+                        Facilities Search
+                    </a>
+                </a>
+                <ul class="nav navbar-nav navbar-right hamburger-positioning">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="background-color: #f8f8f8 !important;" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false"><i class="fa fa-bars hamburger" aria-hidden="true"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/people">People</a></li>
+                            <li><a href="/search">Search</a></li>
+                            <li><a href="/insights">Insights</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-container">
+        </div>
+        <div class="slide-menu-container">
+            <button class="slide-menu-btn" id="org-button" style="border-top: none;">Org Scorecard</button>
+        </div>
+        <div class="menu-leaflet" id="menu-leaflet">
+            <div class="leaflet-close"><i class="fa fa-close" aria-hidden="true"></i></div>
+            <div class="leaflet-text"><i class="fa fa-angle-right bounce" aria-hidden="true"></i></div>
+        </div>
+    <div id="loading">
+        <div class="loader-container">
+            <div class="loading-bar"></div>
+            <div class="label-text">Facilities Search</div>
+            <div class="department-text">Innovation Experience Center</div>
+            <div class="team-text">IT data science group</div>
+        </div>
+    </div>
+
+        <!-- start collapsing menu -->
+        <!-- end collapsing menu -->
+        <!-- start org view -->
+        <div class="org-container">
+            <div class="row">
+                <div class="col-sm-12 personnel-welcome">select an specific organization below</div>
+            </div>
+            <br>
+            <div class="col-sm-9">
+                <div class="form-group personnel-search-bar">
+                    <input type="text" style="margin-left: 20px; margin-top: 14px;" class="form-control" id="parent_org" onkeydown="" placeholder="an organization (e.g. Rebel Alliance)"/>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-primary personnel-submit" onclick="displayDonuts(allInfo)">Submit</button>
+            </div>
+            <div class="row" id="donut-container">
+                <div class="col-md-4" id="donut1-area"></div>
+                <div class="col-md-4" id="donut2-area"></div>
+                <div class="col-md-4" id="donut3-area"></div>
+            </div>
+            <div class="row" id="entire-org-table">
+                <div class="col-xs-1"></div>
+                <div class="col-xs-11">
+                    <div class="table-container" ng-controller="QueryController">
+                        <div class="fire-extinguisher-status">
+                            <div class="col-xs-11" id="" style="margin-left: 20px;">organizations by attribute</div>
+                        </div>
+                        <table class="table" id="org-table">
+                            <thead>
+                            <tr>
+                                <th>Organization</th>
+                                <th>Num People</th>
+                                <th>Square Footage</th>
+                                <th>SqFt per Person</th>
+                                <th>Num Buildings</th>
+                                <th>Labs</th>
+                                <th>Pub. Conf. Rooms</th>
+                                <th>Pri. Conf. Rooms</th>
+                            </tr>
+                            </thead>
+                            <tbody id="org-table-content">
+                            <!-- JS function inserts data -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="footer">
+                <template is='dom-bind' id='footer-wrapper'>
+                    <jpl-footer updated='[[updated]]' content-mail='[[contentMail]]' website-mail='[[websiteMail]]'></jpl-footer>
+                </template>
+                <script>
+                    var wrapper = document.querySelector('#footer-wrapper');
+                    wrapper.contentMail = {name: 'Kyle Hundman', mail: 'mailto:Kyle.A.Hundman@jpl.nasa.gov'};
+                    wrapper.websiteMail = {name: 'Kyle Hundman', mail: 'mailto:Kyle.A.Hundman@jpl.nasa.gov'};
+                    wrapper.updated = 'October 5, 2016';
+                </script>
+            </div>
+        </div>
+        <!-- end org view -->
+        <!-- start fire extinguisher view -->
+        <div class="row fire-container">
+            <div class="col-xs-1"></div>
+            <div class="col-xs-11">
+                <div class="table-container" ng-controller="QueryController">
+                    <div class="fire-extinguisher-status">
+                        <div class="col-xs-1" id="num-violations"></div>
+                        <div class="col-xs-11" id="num-violations-text">non-compliant extinguishers</div>
+                    </div>
+                    <table class="table" id="fire-extinguisher-table">
+                        <thead>
+                        <tr>
+                            <th>Days Since Service</th>
+                            <th>Location</th>
+                            <th>Location Note</th>
+                            <th>Tag Number</th>
+                            <th>Extinguisher Type</th>
+                        </tr>
+                        </thead>
+                        <tbody id="fire-extinguisher-table-content">
+                        <!-- JS function inserts data and assigns the correct class based off of the days since service -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- end fire extinguisher view -->
+        <div class="row">
+            <span>
+                <div id="news-feed" class="col-sm-12 news-feed">
+                    <div class="news-feed-bold">BETA version:&nbsp;</div>
+                    report bugs or share your feedback!
+                    <a href="http://github.com/khundman/facsearch" target="_blank"> 
+                        <div class="feedback-button" id="feedback-button"> 
+                            Github
+                        </div>
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+    </body>
+    <!-- js -->
+    <script type="text/javascript" src="static/js/d3.min.js"></script>
+    <script type="text/javascript" src="static/js/d3.floorplan.js"></script>
+    <script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript" src="static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="static/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="static/js/angular-cookies.js"></script>
+    <!-- // <script src="static/js/fireExtinguishers.js"></script> -->
+    <script src='static/js/bootstrap.min.js'></script>
+    <script src='static/js/query.js'></script>
+    <script src='static/js/barchart.js'></script>
+    <script src="static/js/insights.js"></script>
+    <script src="static/js/jQueryStyles.js"></script>
+    <script>
+        prepScorecard();
+    </script>
+</html>

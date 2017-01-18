@@ -1,0 +1,243 @@
+<!-- Copyright 2015, by the California Institute of Technology. ALL RIGHTS RESERVED. 
+United States Government Sponsorship acknowledged. Any commercial use must be negotiated with 
+the Office of Technology Transfer at the California Institute of Technology.
+This software may be subject to U.S. export control laws. By accepting this software, 
+the user agrees to comply with all applicable U.S. export laws and regulations. 
+User has the responsibility to obtain export licenses, or other export authority as may be 
+required before exporting such information to foreign countries or providing access to foreign persons. -->
+
+<!DOCTYPE html>
+<html ng-app="query">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <title>Search - FacSearch</title>
+        <link rel="icon" href="../static/cleaned_data/favicon2.jpeg">
+        <!-- css -->
+        <link href="{{ url_for('static', filename='css/loading.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/barchart.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/jquery-ui.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+
+        <!-- fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100,700' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
+    </head>
+
+    <body>
+    <ul class="nav navbar-nav navbar-right hamburger-positioning">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle"
+               data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false"><i
+                    class="fa fa-bars hamburger" style="color:white" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/people">People</a></li>
+                <li><a href="/search">Search</a></li>
+                <li><a href="/insights">Insights</a></li>
+            </ul>
+        </li>
+    </ul>
+    <jpl-header site-title="FS" subtitle="Search"></jpl-header>
+    <div id="loading">
+        <div class="loader-container">
+            <div class="loading-bar"></div>
+            <div class="label-text">Facilities Search</div>
+            <div class="department-text">Innovation Experience Center</div>
+            <div class="team-text">IT data science group</div>
+        </div>
+    </div>
+    <div id="content">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <img style="width: 125px; margin-top: 7px; height: auto; float:left;" src="../static/images/jpl_logo.png">
+                <a href="/">
+                    <a class="navbar-brand navtitle" href="/">
+                        FacSearch
+                    </a>
+                </a>
+                <ul class="nav navbar-nav navbar-right hamburger-positioning">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="background-color: #f8f8f8 !important;" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false"><i class="fa fa-bars hamburger" aria-hidden="true"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/people">People</a></li>
+                            <li><a href="/search">Search</a></li>
+                            <li><a href="/insights">Insights</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div ng-controller="QueryController">
+            <div class="row" style="width: 20%; min-width: 250px; float: left; margin-left: 30px;">
+                <div class="col-sm-12 personnel-welcome" style="text-align: left; float: left; margin-bottom: 20px; margin-top: 0px;">
+                    <b> Select types of space: </b>
+                </div>
+                <div class="checkbox-container" id="office-type-checkbox" style="text-align: left; float: left; height: 400px;">
+                    <!-- all types should be unchecked if not all are checked... -->
+                    <input type="checkbox" name="checkType" id="check_mechanical" value = "Mechanical" checked/> Mechanical<br>
+                    <input type="checkbox" name="checkType" id="check_escape" value = "Escape Pod" checked/> Escape Pod<br>
+                    <input type="checkbox" name="checkType" id="check_cockpit" value = "Cockpit" checked/> Cockpit<br>
+                    <input type="checkbox" name="checkType" id="check_floor" value = "Floor Compartments" checked/> Floor Compartments<br>
+                    <input type="checkbox" name="checkType" id="check_cargo" value = "Cargo Bay" checked/> Cargo Bay<br>
+                </div>
+            </div>
+                
+            <div class="row" style="width: 75%; float: left; margin-left: 30px; margin-top: 0px;">
+                <div class="col-sm-12 personnel-welcome" style="width: auto; text-align: left; margin-top: 0;">
+                    <b> Then filter further using additional parameters: </b>
+                </div>
+            </div>
+            
+            <div class="row">
+                
+                <div class="col-sm-3" style="width: 400px; float: left; text-align: left; margin-left: 30px;">
+                    <div class="form-group personnel-search-bar">
+                        <label for="org" class="search-label">Organization</label>
+                        <input type="text" ng-model="user.org" ng-keydown="$event.which === 13 && update(user, null, 'regular')" class="form-control" id="org" placeholder="Organization (e.g. Rebel Alliance)"/>
+                    </div>
+                    <div class="form-group personnel-search-bar">
+                        <label for="badge" class="search-label">Person</label>
+                        <input type="text" ng-model="user.badge" ng-keydown="$event.which === 13 && update(user, null, 'regular')" class="form-control" id="badge" placeholder="name (e.g. Han Solo)"/>
+                    </div>
+                    <div class="form-group personnel-search-bar">
+                        <label for="building" class="search-label">Building</label>
+                        <input type="text" ng-model="user.building" ng-keydown="$event.which === 13 && update(user, null, 'regular')" class="form-control" id="building" placeholder="The building or spacecraft name/number (e.g. Millenium Falcon)"/>
+                    </div>
+                    <div class="form-group personnel-search-bar">
+                        <label for="minSqft" class="search-label">Minimum Square Footage</label>
+                        <input type="number" ng-model="user.sf" ng-keydown="$event.which === 13 && update(user, null, 'regular')" class="form-control" id="minSqft" placeholder="square footage (e.g. 65, 220)"/>
+                    </div>
+                    <div class="form-group personnel-search-bar">
+                        <label for="minResult" class="search-label">Minimum Results</label>
+                        <input type="number" ng-model="user.spaces" ng-keydown="$event.which === 13 && update(user, null, 'regular')" class="form-control" id="minResult" placeholder="the minimum results per floor (e.g. 3)"/>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="float: left;">
+                    <label class="search-label" id="multiple-label">Spaces with Multiple Occupants</label>
+                    <div class="checkbox-container" >
+                        <input type="checkbox" id="check_multiple" onclick=""/> <b>Only spaces with multiple occupants</b><br>
+                    </div>
+                    <br>
+                    <label class="search-label" id="multiple-label">Unoccupied spaces</label>
+                    <div class="checkbox-container" >
+                        <input type="checkbox" id="check_unoccupied" onclick=""/> <b>Only unoccupied spaces</b><br>
+                    </div>
+                    <!-- <br>
+                    <label class="search-label" id="multiple-label">360 imagery available</label>
+                    <div class="checkbox-container" >
+                        <input type="checkbox" id="check_threesixty" onclick=""/> <b>Only spaces with 360 image of space</b><br>
+                    </div>
+                    <br>
+                    <label class="search-label" id="multiple-label">Motion sensor available</label>
+                    <div class="checkbox-container" >
+                        <input type="checkbox" id="check_sensor" onclick=""/> <b>Only spaces with live motion sensors</b><br>
+                    </div> -->
+                </div>
+<!--                 <div class="col-sm-5">
+                    
+                    
+                </div> -->
+            </div>
+            <div class="separator"></div>
+            <br>
+            <div class="row">
+                <div class="col-sm-12 button-div">
+                    <button type="submit" class="btn btn-default search-submit" onclick="clearRegular()" style="background: #e7e7e7;">Clear</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 button-div">
+                    <button type="submit" class="btn btn-primary search-submit" ng-click="update(user, null, 'regular')" onclick="showResults()">Submit</button>
+                </div>
+            </div>
+            <div id="results">
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12 personnel-welcome" id="result-summary">
+                        {{totalResults|angular}} room results on {{totalFloors|angular}} floors
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="view-switch-container">
+                    <div class="btn btn-default view-submit" id="grid-view" style="background: #e7e7e7;">Grid</div>
+                    <div class="btn btn-default view-submit" id="chart-view" style="background: #e7e7e7;">Chart</div>
+                </div>
+            </div>
+            <div id="results-barchart">
+                <div class="barchart-title" id="chart-title">Number of Query Results per Building</div>
+                <br>
+                <div class="barchart-legend" id="barchart-legend">
+                    <div class="label label-expand label-basement">Basement</div>
+                    <div class="label label-expand label-1">Floor 1</div>
+                    <div class="label label-expand label-2">Floor 2</div>
+                    <div class="label label-expand label-3">Floor 3</div>
+                    <div class="label label-expand label-4">Floor 4</div>
+                    <div class="label label-expand label-5">Floor 5</div>
+                    <div class="label label-expand label-6">Floor 6</div>
+                    <div class="label label-expand label-7">Floor 7</div>
+                    <div class="label label-expand label-8">Floor 8</div>
+                </div>
+                <div class="barchart-error" id="chart-error"></div>
+            </div>
+            <div class="row">
+                <div class="search-result-container" id="search-result-container">
+                    <div class="search-result" style="width: 185px;" ng-repeat="result in master" id="{{result.floor|angular}}" onclick="update_param(id)">
+                        <div class="search-result-title">
+                            <a href="#" class="search-result-link">{{result.floor|angular}}</a>
+                        </div>
+                        <div class="search-result-count">
+                            <div class="badge badge-override">{{result.count|angular}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="footer">
+                <template is='dom-bind' id='footer-wrapper'>
+                    <jpl-footer updated='[[updated]]' content-mail='[[contentMail]]' website-mail='[[websiteMail]]'></jpl-footer>
+                </template>
+                <script>
+                    var wrapper = document.querySelector('#footer-wrapper');
+                    wrapper.contentMail = {name: 'Kyle Hundman', mail: 'mailto:Kyle.A.Hundman@jpl.nasa.gov'};
+                    wrapper.websiteMail = {name: 'Kyle Hundman', mail: 'mailto:Kyle.A.Hundman@jpl.nasa.gov'};
+                    wrapper.updated = 'October 5, 2016';
+                </script>
+            </div>
+            <div class="row">
+                <span>
+                    <div id="news-feed" class="col-sm-12 news-feed">
+                        <div class="news-feed-bold">BETA version:&nbsp;</div>
+                        report bugs or share your feedback!
+                        <a href="http://github.com/khundman/facsearch" target="_blank"> 
+                        <div class="feedback-button" id="feedback-button"> 
+                            Github
+                        </div>
+                    </a>
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+    </body>
+    <!-- js -->
+    <!-- <script src="static/data_sources/360_scene_lookup.json"></script> -->
+    <script type="text/javascript" src="static/js/d3.min.js"></script>
+    <script type="text/javascript" src="static/js/d3.floorplan.js"></script>
+    <script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript" src="static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="static/js/jquery.cookie.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="static/js/angular-cookies.js"></script>
+    <script src='static/js/bootstrap.min.js'></script>
+    <script src='static/js/barchart.js'></script>
+    <script src='static/js/query.js'></script>
+    <script src="static/js/jQueryStyles.js"></script>
+</html>

@@ -1,0 +1,931 @@
+/* map menu controls */
+
+.ui-active rect {fill: #212121}
+.ui-active text {fill: #fff}
+.ui-default rect {fill: #e6e6e6}
+.ui-default text {fill: #000}
+
+/* heatmap colors (courtesy of colorbrewer2.org) */
+.people .d6-6 {fill:#D73027;background:#D73027;color:#121212}
+.people .d6-5 {fill:#FC8D59;background:#FC8D59;color:#121212}
+.people .d6-4 {fill:#FEE090;background:#FEE090;color:#121212}
+.people .d6-3 {fill:#E0F3F8;background:#E0F3F8;color:#121212}
+.people .d6-2 {fill:#91BFDB;background:#91BFDB;color:#121212}
+.people .d6-1 {fill:#4575B4;background:#4575B4;color:#121212}
+
+
+.fp-fire {
+    transform: scale(1.337) translate(50px, 0px);
+}
+.fp-results {
+    transform: scale(1.337) translate(50px, 0px);
+}
+.fp-type {
+    transform: scale(1.337) translate(50px, 0px);
+}
+.fp-occupied {
+    transform: scale(1.337) translate(50px, 0px);
+}
+
+.storage {
+    fill:#ff7f0e;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+    display:block;
+    width: 20px;
+    word-wrap: break-word;
+}
+
+.lab {
+    fill:#2ca02c;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.mechanical {
+    fill:#98df8a; 
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.shop {
+    fill:#dbdb8d;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.operational {
+    fill: #9edae5;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.construction {
+    fill: #e7ba52;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.circulation {
+    fill:#9467bd;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.tech {
+    fill:#ffbb78;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.unknown {
+    fill:#666;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.misc {
+    fill:#e377c2;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.officeopen {
+    fill:#1f77b4;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.officeclosed {
+    fill:#aec7e8;
+    opacity:.2;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.occupied {
+    fill:#fd8d3c;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.notofficespace {
+    fill:#969696;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.openoffice {
+    fill:#FFD54F;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.available {
+    fill:#6baed6;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.opencube {
+    fill:#64B5F6;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.publicconf {
+    fill:#d62728;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.privateconf {
+    fill:#ff9896;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.custodial {
+    fill:#c49c94;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.training {
+    fill:#c5b0d5;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.warehouse {
+    fill: #8c564b;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.execopen {
+    fill: #f7b6d2;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.execclosed {
+    fill: #bcbd22;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.additional1 {
+    fill: #ffbf00;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.additional2 {
+    fill: #ba2e46;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.additional3 {
+    fill: #c24169;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.additional4 {
+    fill: #23cf5f;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.additional5 {
+    fill: #86c66f;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.additional6 {
+    fill: #7fbe05;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.additional7 {
+    fill: #e67b3b;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.additional8 {
+    fill: #e5d8b7;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.CO2 {
+    fill: #e377c2;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.WATER {
+    fill: #23cf5f;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.HALON {
+    fill: #bcbd22;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.METALX {
+    fill: #c5b0d5;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.HALOTRON {
+    fill: #64B5F6;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.DC {
+    fill: #ff9896;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.OTHER {
+    fill: steelblue;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.NONE {
+    fill: #999;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.other {
+    fill: red;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.match {
+    fill: #009956;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.nomatch {
+    fill: #B8B8B8;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.Compliant {
+    fill: #009956;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.NonCompliant {
+    fill: #FC5502;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.SevereNonCompliance {
+    fill: #DA3610;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.Upcoming {
+    fill: #FEC622;
+    opacity:1;
+    stroke: #000;
+    stroke-width: 1;
+}
+
+.btn {
+  background: #22428D;
+  background-image: -webkit-linear-gradient(top, #22428D, #2980b9);
+  background-image: -moz-linear-gradient(top, #22428D, #2980b9);
+  background-image: -ms-linear-gradient(top, #22428D, #2980b9);
+  background-image: -o-linear-gradient(top, #22428D, #2980b9);
+  background-image: linear-gradient(to bottom, #22428D, #2980b9);
+  -webkit-border-radius: 28px;
+  -moz-border-radius: 28px;
+  border-radius: 28px;
+  font-family: 'Lato', sans-serif;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+/* overlays */
+.polygon {stroke:white;stroke-width:2px;fill-opacity:0.2}
+.vertex {stroke:lime;stroke-width:2px;fill:none}
+
+/* vector field */
+.vector {stroke-width:1px;stroke:lightsteelblue}
+
+/* path plot */
+.pathplot path {stroke-width:2px;stroke:steelblue}
+.planned {stroke-dasharray:9, 5}
+
+/*text*/
+.text {
+	fill:#000;
+    font-weight: bold;
+	opacity: 1;
+	font-family: 'Lato', sans-serif;
+	font-size: 2pt;
+}
+
+.left .tipsy-inner {
+    background-color: #000;
+    color: #FFF;
+    font-family: 'Lato', sans-serif;
+    padding: 3px 3px 3px 3px;
+    text-align: left;
+    font-size: 10px;
+    fill-opacity: 1;
+}
+
+.select1 {
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  display: table-cell;
+  padding: 10px;
+}
+
+.form {
+    float: left; 
+    padding-left: 60px;
+    padding-right: 100px; 
+    font-family: 'Lato', sans-serif;
+    font-size: 10pt;
+}
+
+.resultsheader {
+    font-family: 'Lato', sans-serif;
+    font-size: 10pt;
+    font-weight: normal;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #D0D0D0 ;
+    color: #000;
+}
+
+.results {
+    font-family: 'Lato', sans-serif;
+    font-size: 11pt;
+    font-weight: normal;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.rownum {
+    font-family: 'Lato', sans-serif;
+    font-size: 8pt;
+    font-weight: normal;
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: #D0D0D0 ;
+    color: #000000;
+}
+
+
+.legend { list-style: none; }
+.legend li { 
+  float: left; 
+  margin-right: 1px; 
+  margin-left: 8px;
+  font-family: 'Lato', sans-serif;
+  font-size: 13px;
+}
+
+.legend span { 
+  float: right; 
+  width: 15px; 
+  height: 20px; 
+  margin: 2px;
+}
+
+.label {
+    font-size: 90% !important;
+    padding: .55em .6em .5em !important;
+    font-weight: 300 !important;
+    width: auto! important;
+}
+
+/*Custom classes for RESULTS legend*/
+.label-match {
+  background-color: #009956;
+  float: left;
+  margin: 5px;
+}
+.label-nomatch {
+  background-color: #B8B8B8;
+  float: left;
+  margin: 5px;
+}
+
+/*Custom classes for OCCUPIED? legend*/
+.label-available{
+  background-color: #6baed6;
+  float: left;
+  margin: 5px;
+}
+.label-occupied {
+  background-color: #fd8d3c;
+  float: left;
+  margin: 5px;
+}
+.label-notpossible {
+  background-color: #969696;
+  float: left;
+  margin: 5px;
+}
+
+/*Custom classes for FIRE EXTINGUISHER legend*/
+.label-CO2{
+  background-color: #e377c2;
+  float: left;
+  margin: 5px;
+}
+.label-WATER{
+    background-color: #23cf5f;
+    float: left;
+    margin: 5px;
+}
+.label-HALON {
+  background-color: #bcbd22;
+  float: left;
+  margin: 5px;
+}
+.label-METALX {
+    background-color: #c5b0d5;
+    float: left;
+    margin: 5px;
+}
+.label-DC {
+    background-color: #ff9896;
+    float: left;
+    margin: 5px;
+}
+.label-HALOTRON {
+    background-color: #64B5F6;
+    float: left;
+    margin: 5px;
+}
+.label-NONE {
+    background-color: #999;
+    float: left;
+    margin: 5px;
+}
+.label-OTHER {
+    background-color: steelblue;
+    float: left;
+    margin: 5px;
+}
+
+/*Custom classes for EXTINGUISHER DATE legend */
+.label-Compliant {
+    background-color: #009956;
+    float: left;
+    margin: 5px;
+}
+
+.label-NonCompliant {
+    background-color: #FC5502;
+    float: left;
+    margin: 5px;
+}
+
+.label-SevereNonCompliance {
+    background-color: #DA3610;
+    float: left;
+    margin: 5px;
+}
+
+.label-Upcoming {
+    background-color: #FEC622;
+    float: left;
+    margin: 5px;
+}
+
+/*Custom classes for AVAILABILITY legend */
+.label-officeopenunoccupied {
+  background-color: #1f77b4;
+  float: left;
+  margin: 5px;
+}
+
+.label-officeopenoccupied {
+  background-color: #ad494a;
+  float: left;
+  margin: 5px;
+}
+
+.label-officeclosedunoccupied {
+  background-color: #aec7e8;
+  float: left;
+  margin: 5px;
+}
+
+.label-officeclosedoccupied {
+  background-color: #dbdb8d;
+  float: left;
+  margin: 5px;
+}
+
+/*Custom classes for TYPE legend*/
+.label-officeopen {
+  background-color: #1f77b4;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-officeopen:hover {
+    width: 300px !important;
+}
+.label-officeclosed {
+  background-color: #aec7e8;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-officeclosed:hover {
+    width: 350px !important;
+}
+.label-storage {
+  background-color: #ff7f0e;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-storage:hover {
+    width: 355px !important;
+}
+.label-tech {
+  background-color: #ffbb78;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-tech:hover {
+    width: 260px !important;
+}
+.label-shop {
+  background-color: #dbdb8d;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-shop:hover {
+    width: 260px !important;
+}
+.label-construction {
+  background-color: #e7ba52;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-construction:hover {
+    width: 260px !important;
+}
+.label-operational {
+  background-color: #9edae5;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-operational:hover {
+    width: 260px !important;
+}
+.label-lab {
+  background-color: #2ca02c;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-lab:hover {
+    width: 260px !important;
+}
+.label-mechanical {
+  background-color: #98df8a;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-mechanical:hover {
+    width: 300px !important;
+}
+.label-publicconf {
+  background-color: #d62728;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-publicconf:hover {
+    width: 260px !important;
+}
+.label-privateconf {
+  background-color: #ff9896;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-privateconf:hover {
+    width: 260px !important;
+}
+.label-circulation {
+  background-color: #9467bd;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-circulation:hover {
+    width: 400px !important;
+}
+.label-training {
+  background-color: #c5b0d5;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-training:hover {
+    width: 270px !important;
+}
+.label-warehouse {
+  background-color: #8c564b;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-warehouse:hover {
+    width: 350px !important;
+}
+.label-custodial{
+  background-color: #c49c94;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-custodial:hover {
+    width: 260px !important;
+}
+.label-misc {
+  background-color: #e377c2;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-misc:hover {
+    width: 260px !important;
+}
+.label-execopen {
+  background-color: #f7b6d2;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-execopen:hover {
+    width: 260px !important;
+}
+.label-execclosed {
+  background-color: #bcbd22;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-execclosed:hover {
+    width: 260px !important;
+}
+.label- {
+  background-color: red;
+  float: left;
+  margin: 5px;
+  width: 47px !important;
+  -webkit-transition: width 1s;
+  transition: width 1s;
+  overflow: hidden;
+}
+.label-:hover {
+    width: 260px !important;
+}
+.label-additional1 {
+    background-color: #ffbf00;
+    float: left;
+    margin: 5px;
+    width: 47px !important;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    overflow: hidden;
+}
+.label-additional1:hover {
+    width: 260px !important;
+}
+.label-additional2 {
+    background-color: #ba2e46;
+    float: left;
+    margin: 5px;
+    width: 47px !important;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    overflow: hidden;
+}
+.label-additional2:hover {
+    width: 260px !important;
+}
+.label-additional3 {
+    background-color: #c24169;
+    float: left;
+    margin: 5px;
+    width: 47px !important;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    overflow: hidden;
+}
+.label-additional3:hover {
+    width: 260px !important;
+}
+.label-additional4 {
+    background-color: #23cf5f;
+    float: left;
+    margin: 5px;
+    width: 47px !important;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    overflow: hidden;
+}
+.label-additional4:hover {
+    width: 260px !important;
+}
+.label-additional5 {
+    background-color: #86c66f;
+    float: left;
+    margin: 5px;
+    width: 47px !important;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    overflow: hidden;
+}
+.label-additional5:hover {
+    width: 260px !important;
+}
+.label-additional6 {
+    background-color: #7fbe05;
+    float: left;
+    margin: 5px;
+    width: 47px !important;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    overflow: hidden;
+}
+.label-additional6:hover {
+    width: 260px !important;
+}
+.label-additional7 {
+    background-color: #e67b3b;
+    float: left;
+    margin: 5px;
+    width: 47px !important;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    overflow: hidden;
+}
+.label-additional7:hover {
+    width: 260px !important;
+}
+.label-additional8 {
+    background-color: #e5d8b7;
+    float: left;
+    margin: 5px;
+    width: 47px !important;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    overflow: hidden;
+}
+.label-additional8:hover {
+    width: 260px !important;
+}
+.label-unknown{
+  background-color: #666;
+  float: left;
+  margin: 5px;
+}
+.label-override {
+    width: auto !important;
+}
+.label-override:hover {
+    width: auto !important;
+}

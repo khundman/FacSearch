@@ -1,0 +1,196 @@
+<!-- Copyright 2015, by the California Institute of Technology. ALL RIGHTS RESERVED. 
+United States Government Sponsorship acknowledged. Any commercial use must be negotiated with 
+the Office of Technology Transfer at the California Institute of Technology.
+This software may be subject to U.S. export control laws. By accepting this software, 
+the user agrees to comply with all applicable U.S. export laws and regulations. 
+User has the responsibility to obtain export licenses, or other export authority as may be 
+required before exporting such information to foreign countries or providing access to foreign persons. -->
+
+<!DOCTYPE html>
+<html ng-app="floorplan">
+	<head>
+
+        <!-- css -->
+        <link href="{{ url_for('static', filename='css/floorplan.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/jquery-ui.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+
+        <!-- Polymer components -->
+        <link rel="icon" href="../static/cleaned_data/favicon.gif">
+        <!-- fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100,700' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
+
+		<!-- floorplan page specific nav margin -->
+        <style>
+            nav {
+                margin-bottom: 0 !important;
+                border-radius: 0px !important;
+            }
+            .slide-leaflet {
+            	height: 79px;
+            }
+        </style>
+	</head>
+
+
+	<body>
+    <div class="header-container">
+        <ul class="nav navbar-nav navbar-right hamburger-positioning">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle"
+                   data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false"><i
+                        class="fa fa-bars hamburger" style="color:white" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/people">People</a></li>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/insights">Insights</a></li>
+                    <!--<li role="separator" class="divider"></li>-->
+                    <!--<li><a href="/full">More Options</a></li>-->
+                </ul>
+            </li>
+        </ul>
+        <jpl-header></jpl-header>
+    </div>
+    <div id="content">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <img style="width: 125px; margin-top: 7px; height: auto; float:left;" src="../static/images/jpl_logo.png">
+                <a href="/">
+                    <a class="navbar-brand navtitle" href="/">
+                        Facilities Search
+                    </a>
+                </a>
+                <ul class="nav navbar-nav navbar-right hamburger-positioning">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="background-color: #f8f8f8 !important;" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false"><i class="fa fa-bars hamburger" aria-hidden="true"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/people">People</a></li>
+                            <li><a href="/search">Search</a></li>
+                            <li><a href="/insights">Insights</a></li>
+                            <!--<li role="separator" class="divider"></li>-->
+                            <!--<li><a href="/full">More Options</a></li>-->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div ng-controller="Legend" id="Legend">
+            <div class="row legend-controls-container">
+                <div class="col-sm-12">
+                    <div class="legend-title" id="view-indicator">
+                        Legend:
+
+                    </div>
+                    <a ng-href="/search"><button style="float:right" class="btn btn-primary" ng-click="sendToDude()">Back To Query</button></a>
+                    <div class="legend-container" id="legendDiv">
+                        <span class='label label-expand label-{{'{{classes[0]}}'}}''}}'}}>{{'{{labels[0]}}'}}</span>
+                        <span class='label label-{{'{{classes[1]}}'}}''}}'}}>{{'{{labels[1]}}'}}</span>
+                        <span class='label label-{{'{{classes[2]}}'}}''}}'}}>{{'{{labels[2]}}'}}</span>
+                        <span class='label label-{{'{{classes[3]}}'}}''}}'}}>{{'{{labels[3]}}'}}</span>
+                        <span class='label label-{{'{{classes[4]}}'}}''}}'}}>{{'{{labels[4]}}'}}</span>
+                        <span class='label label-{{'{{classes[5]}}'}}''}}'}}>{{'{{labels[5]}}'}}</span>
+                        <span class='label label-{{'{{classes[6]}}'}}''}}'}}>{{'{{labels[6]}}'}}</span>
+                        <span class='label label-{{'{{classes[7]}}'}}''}}'}}>{{'{{labels[7]}}'}}</span>
+                        <span class='label label-{{'{{classes[8]}}'}}''}}'}}>{{'{{labels[8]}}'}}</span>
+                        <span class='label label-{{'{{classes[9]}}'}}''}}'}}>{{'{{labels[9]}}'}}</span>
+                        <span class='label label-{{'{{classes[10]}}'}}''}}'}}>{{'{{labels[10]}}'}}</span>
+                        <span class='label label-{{'{{classes[11]}}'}}''}}'}}>{{'{{labels[11]}}'}}</span>
+                        <span class='label label-{{'{{classes[12]}}'}}''}}'}}>{{'{{labels[12]}}'}}</span>
+                        <span class='label label-{{'{{classes[13]}}'}}''}}'}}>{{'{{labels[13]}}'}}</span>
+                        <span class='label label-{{'{{classes[14]}}'}}''}}'}}>{{'{{labels[14]}}'}}</span>
+                        <span class='label label-{{'{{classes[15]}}'}}''}}'}}>{{'{{labels[15]}}'}}</span>
+                        <span class='label label-{{'{{classes[16]}}'}}''}}'}}>{{'{{labels[16]}}'}}</span>
+                        <span class='label label-{{'{{classes[17]}}'}}''}}'}}>{{'{{labels[17]}}'}}</span>
+                        <span class='label label-{{'{{classes[18]}}'}}''}}'}}>{{'{{labels[18]}}'}}</span>
+                        <span class='label label-{{'{{classes[19]}}'}}''}}'}}>{{'{{labels[19]}}'}}</span>
+                        <span class='label label-{{'{{classes[20]}}'}}''}}'}}>{{'{{labels[20]}}'}}</span>
+                        <span class='label label-{{'{{classes[21]}}'}}''}}'}}>{{'{{labels[21]}}'}}</span>
+                        <span class='label label-{{'{{classes[22]}}'}}''}}'}}>{{'{{labels[22]}}'}}</span>
+                        <span class='label label-{{'{{classes[23]}}'}}''}}'}}>{{'{{labels[23]}}'}}</span>
+                        <span class='label label-{{'{{classes[24]}}'}}''}}'}}>{{'{{labels[24]}}'}}</span>
+                        <span class='label label-{{'{{classes[25]}}'}}''}}'}}>{{'{{labels[25]}}'}}</span>
+                        <span class='label label-{{'{{classes[26]}}'}}''}}'}}>{{'{{labels[26]}}'}}</span>
+                        <span class='label label-{{'{{classes[27]}}'}}''}}'}}>{{'{{labels[27]}}'}}</span>
+                        <span class='label label-{{'{{classes[28]}}'}}''}}'}}>{{'{{labels[28]}}'}}</span>
+                        <span class='label label-{{'{{classes[29]}}'}}''}}'}}>{{'{{labels[29]}}'}}</span>
+                        <span class='label label-{{'{{classes[30]}}'}}''}}'}}>{{'{{labels[30]}}'}}</span>
+                        <span class='label label-{{'{{classes[31]}}'}}''}}'}}>{{'{{labels[31]}}'}}</span>
+                        <span class='label label-{{'{{classes[32]}}'}}''}}'}}>{{'{{labels[32]}}'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-leaflet" id="menu-leaflet" style="top:inherit;height:96.2vh;margin-top:50px">
+                <div class="leaflet-close"><i class="fa fa-close" aria-hidden="true"></i></div>
+                <div class="leaflet-text"><i class="fa fa-angle-right bounce" aria-hidden="true"></i></div>
+            </div>
+            <!-- start collapsing menu -->
+            <div class="slide-menu-container" style="top:inherit;margin-top:50px">
+
+                <button class="slide-menu-btn" style="border-top: none;" ng-click="updateLegend('results', null, null, true)" id="queryResults">Query Results</button>
+                <button class="slide-menu-btn" ng-click="updateLegend('orgOwner', null, null, true)" id="allocatedOrg">Organization</button>
+                <button class="slide-menu-btn" ng-click="updateLegend('occupied', null, null, true)" id="availability">Availability</button>
+                <button class="slide-menu-btn" ng-click="updateLegend('typeOfSpace', null, null, true)" id="spaceType">Space Type</button>
+                <!-- <button class="slide-menu-btn" ng-click="updateLegend('threesixty', null, null, true)" id="threesixty_avail">360 Imagery</button>
+                <button class="slide-menu-btn" ng-click="updateLegend('conf_sensor', null, null, true)" id="conf_sensor">Motion Sensors</button> -->
+                <button class="slide-menu-btn" ng-click="updateLegend('imageLayer', null, null, true)" id="floorplanDrawing">Floorplan</button>
+                <button class="slide-menu-btn" id="bottom-button" onclick="download_file(dataForDownload)">Export as CSV</button>
+            </div>
+        <div class="row floorplan-view-container" id="floorplan-view-container">
+            <!-- end collapsing menu -->
+            <div class="col-sm-12" style="margin-top:10%">
+                <div id="floorplan" class="page"></div>
+            </div>
+        </div>
+        </div>
+        <div class="footer">
+            <template is='dom-bind' id='footer-wrapper'>
+                <jpl-footer updated='[[updated]]' content-mail='[[contentMail]]' website-mail='[[websiteMail]]'></jpl-footer>
+            </template>
+            <script>
+                var wrapper = document.querySelector('#footer-wrapper');
+                wrapper.contentMail = {name: 'Kyle Hundman', mail: 'mailto:Kyle.A.Hundman@jpl.nasa.gov'};
+                wrapper.websiteMail = {name: 'Kyle Hundman', mail: 'mailto:Kyle.A.Hundman@jpl.nasa.gov'};
+                wrapper.updated = 'October 5, 2016';
+            </script>
+        </div>
+        <div class="row">
+            <span>
+                <div id="news-feed" class="col-sm-12 news-feed">
+                    <div class="news-feed-bold">BETA version:&nbsp;</div>
+                    report bugs or share your feedback!
+                    <a href="http://github.com/khundman/facsearch" target="_blank"> 
+                        <div class="feedback-button" id="feedback-button"> 
+                            Github
+                        </div>
+                    </a>
+                </div>
+            </span>
+        </div>
+    </div>
+    <div class="zoom-controls">
+        <i class="fa fa-plus-circle zoom-button" id="zoom-in"></i>
+        <i class="fa fa-minus-circle zoom-button" id="zoom-out"></i>
+    </div>
+
+  	</body>
+	<!-- js -->
+	<script type="text/javascript" src="static/js/d3.min.js"></script>
+	<script type="text/javascript" src="static/js/d3.floorplan.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript" src="static/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery.tipsy.js"></script>
+    <script src="static/js/angular-cookies.js"></script>
+	<script src='static/js/bootstrap.min.js'></script>
+    <script src="static/js/svg-pan-zoom.min.js"></script>
+	<script src='static/js/filesaver.js'></script>
+	<script src='static/js/display.js'></script>
+    <!-- // <script src="static/data_sources/360_scene_lookup.json"></script> -->
+    <script src="static/js/jQueryStyles.js"></script>
+    <!-- // <script src="static/js/sensor_time_series.js"></script> -->
+</html>

@@ -1,0 +1,16 @@
+#*/frontend/DWGs
+#*/frontend/floorplans/pdf
+#*/frontend/svg/archive
+#*/frontend/svg/temp
+*
+!data_scripts/
+!manifests/
+!static/
+!templates/
+!app.py
+!docker-compose.template.yml
+!docker-compose.yml
+!Dockercompile-static
+!Dockerfile
+!requirements.txt
+!Makefile

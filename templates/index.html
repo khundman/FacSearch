@@ -1,0 +1,166 @@
+<!-- Copyright 2015, by the California Institute of Technology. ALL RIGHTS RESERVED. 
+United States Government Sponsorship acknowledged. Any commercial use must be negotiated with 
+the Office of Technology Transfer at the California Institute of Technology.
+This software may be subject to U.S. export control laws. By accepting this software, 
+the user agrees to comply with all applicable U.S. export laws and regulations. 
+User has the responsibility to obtain export licenses, or other export authority as may be 
+required before exporting such information to foreign countries or providing access to foreign persons. -->
+
+<!DOCTYPE html>
+<html ng-app="query">
+<head>
+    <!-- Polymer components -->
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Home - FacSearch</title>
+    <!-- css -->
+    <link href="{{ url_for('static', filename='css/loading.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='css/jquery-ui.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link rel="icon" href="../static/cleaned_data/favicon.gif">
+    <!-- fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,300,100,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Pavanam" rel="stylesheet">
+</head>
+
+<body>
+<ul class="nav navbar-nav navbar-right hamburger-positioning">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle"
+           data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false"><i
+                class="fa fa-bars hamburger" style="color:white" aria-hidden="true"></i></a>
+        <ul class="dropdown-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/people">People</a></li>
+            <li><a href="/search">Search</a></li>
+            <li><a href="/insights">Insights</a></li>
+            <!--<li role="separator" class="divider"></li>-->
+            <!--<li><a href="/full">More Options</a></li>-->
+        </ul>
+    </li>
+</ul>
+<jpl-header site-title="FS" subtitle="Facilities Search"></jpl-header>
+<div id="loading">
+    <div class="loader-container">
+        <div class="loading-bar"></div>
+        <div class="label-text">FacSearch</div>
+        <div class="team-text">JPL IT Data Science</div>
+    </div>
+</div>
+<div id="content">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <img style="width: 125px; margin-top: 7px; height: auto; float:left;" src="../static/images/jpl_logo.png">
+            <a href="/">
+                <a class="navbar-brand navtitle" href="/">
+                    FacSearch
+                </a>
+            </a>
+            <ul class="nav navbar-nav navbar-right hamburger-positioning">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" style="background-color: #f8f8f8 !important;" data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false"><i class="fa fa-bars hamburger" aria-hidden="true"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/people">People</a></li>
+                        <li><a href="/search">Search</a></li>
+                        <li><a href="/insights">Insights</a></li>
+                        <!--<li role="separator" class="divider"></li>-->
+                        <!--<li><a href="/full">More Options</a></li>-->
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-sm-12 welcome">
+            Welcome to the JPL FacSearch Millenium Falcon Demo!
+            <br>
+            Have a look around:
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="optioncontainer">
+        <div class="row">
+            <div class="col-sm-4 optionindv" onclick="window.location.href='/people'">
+                <div class="optionicon">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="optionheading">
+                    People
+                </div>
+                <div class="optiondescription">
+                    Search for a specific individual and retrieve his or her contact info.
+                </div>
+            </div>
+            <div class="col-sm-4 optionindv" onclick="window.location.href='/search'">
+                <div class="optionicon">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="optionheading">
+                    Advanced Search
+                </div>
+                <div class="optiondescription">
+                    Locate people, spaces, and things matching various attributes.
+                </div>
+            </div>
+            <div class="col-sm-4 optionindv" onclick="window.location.href='/insights'">
+                <div class="optionicon">
+                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                </div>
+                <div class="optionheading">
+                    Insights
+                </div>
+                <div class="optiondescription">
+                    Visually explore organization efficiency and analyze data.
+                </div>
+            </div>
+            <!--<div class="col-sm-3 optionindv" onclick="window.location.href='/full'">-->
+                <!--<div class="optionicon">-->
+                    <!--<i class="fa fa-search" aria-hidden="true"></i>-->
+                <!--</div>-->
+                <!--<div class="optionheading">-->
+                    <!--More Options-->
+                <!--</div>-->
+                <!--<div class="optiondescription">-->
+                    <!--Conduct an advanced search with specific attributes.-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="footer">
+        <template is='dom-bind' id='footer-wrapper'>
+            <jpl-footer updated='[[updated]]' content-mail='[[contentMail]]' website-mail='[[websiteMail]]'></jpl-footer>
+        </template>
+    </div>
+
+    <div class="row">
+        <div id="news-feed" class="col-sm-12 news-feed">
+            <div class="news-feed-bold">BETA version:&nbsp;</div>
+            report bugs or share your feedback!
+            <a href="http://github.com/khundman/facsearch" target="_blank"> 
+                <div class="feedback-button" id="feedback-button"> 
+                    Github
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+<!-- js -->
+
+<script type="text/javascript" src="static/js/d3.min.js"></script>
+<script type="text/javascript" src="static/js/d3.floorplan.js"></script>
+<script type="text/javascript" src="static/js/jquery.js"></script>
+<script type="text/javascript" src="static/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="static/js/jquery.tipsy.js"></script>
+<script type="text/javascript" src="static/js/jquery.cookie.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script src="static/js/angular-cookies.js"></script>
+<script src='static/js/bootstrap.min.js'></script>
+<script src='static/js/query.js'></script>
+<script src="static/js/jQueryStyles.js"></script>
+</html>

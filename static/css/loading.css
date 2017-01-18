@@ -1,0 +1,68 @@
+#content {
+    display: none;
+}
+.loader-container {
+    width: 300px;
+    height: auto;
+    text-align: center;
+    position: absolute;
+    margin: 30% auto auto auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.label-text {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 2.1em;
+    text-transform: lowercase;
+    margin-top: 5px;
+}
+.department-text {
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
+    font-size: 0.8em;
+    text-transform: lowercase;
+    margin-top: 15px;
+}
+.team-text {
+    font-family: 'Lato', sans-serif;
+    font-weight: 100;
+    font-size: 0.8em;
+}
+.loading-bar {
+  width : 240px;
+  margin-left: 30px;
+  margin-top : -140px;
+  border-top : 3px solid #D3282B;
+  opacity : 0;
+  -webkit-animation : writeline 5s infinite ease-in;
+  -moz-animation : writeline 5s infinite ease-in;
+  -o-animation : writeline 5s infinite ease-in;
+  animation : writeline 5s infinite ease-in;
+}
+@-webkit-keyframes writeline {
+  0% { width : 0; opacity: 0; }
+  33% { width : 15px; opacity : 1; }
+  70% { opacity : 1; }
+  100% {opacity : 0; }
+}
+@-moz-keyframes writeline {
+  0% { width : 0; opacity: 0; }
+  33% { width : 15px; opacity : 1; }
+  70% { opacity : 1; }
+  100% {opacity : 0; }
+}
+@-o-keyframes writeline {
+  0% { width : 0; opacity: 0; }
+  33% { width : 15px; opacity : 1; }
+  70% { opacity : 1; }
+  100% {opacity : 0; }
+}
+@keyframes writeline {
+  0% { width : 0; opacity: 0; }
+  33% { width : 15px; opacity : 1; }
+  70% { opacity : 1; }
+  100% {opacity : 0; }
+}

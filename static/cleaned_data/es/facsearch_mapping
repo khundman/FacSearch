@@ -1,0 +1,81 @@
+{
+	"mappings" : {
+		"facsearch" : {
+	    	"properties" : {
+	        	"building" : {
+	        		"type" : "string", 
+	        		"index":"not_analyzed"
+	        	},
+	        	"floor" : {
+	        		"type" : "string",
+	        		"index":"not_analyzed"
+	        	},
+	        	"room" : {
+	        		"type" : "string",
+	        		"index":"not_analyzed"
+	        	},
+	        	"spaceType" : {
+	        		"type" : "string",
+	        		"index":"not_analyzed"
+	        	},
+	        	"spaceSection" : {
+	        		"type" : "string",
+	        		"index": "not_analyzed"
+	        	},
+	        	"squareFeet": {
+	        		"type" : "integer"
+	        	},
+	        	"points": {
+	        		"type" : "nested",
+	        	 	"properties": {
+	        	 		"x": {
+	        	 			"type" : "float"
+	        	 		},
+	        	 		"y": {
+	        	 			"type": "float"
+	        	 		}
+	        	 	}
+	        	},
+	        	"people": {
+	        		"type" : "nested",
+	        	 	"properties": {
+	        	 		"cellphone": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"email": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"empType": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"firstname": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"lastname": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"mailstop": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"personOrg1": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"cellphone": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"title": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"workSchedule": {
+	        	 			"type": "string"
+	        	 		},
+	        	 		"badge": {
+	        	 			"type": "string",
+	        	 			"index": "not_analyzed"
+	        	 		}
+	        	 	}
+	        	}
+	    	}
+		}	
+	}
+}

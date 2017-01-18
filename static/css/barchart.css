@@ -1,0 +1,108 @@
+.bar:hover {
+  fill: #FFC341;
+}
+.axis {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.5em;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+svg2 {
+  width: 1125px;
+  height: 500px;
+  border: solid 1px #fff;
+  font: 10px sans-serif;
+  shape-rendering: crispEdges;
+}
+.x.axis path {
+  display: none;
+}
+#results-barchart {
+    display: none;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.barchart-title {
+    margin-top: 5%;
+    text-align: center;
+    color: #777;
+    font-family: 'Lato', sans-serif !important;
+    font-size: 1.3em;
+    font-weight: 300;
+}
+.barchart-error {
+    margin-top: 5%;
+    text-align: center;
+    color: #D3282B;
+    font-family: 'Lato', sans-serif !important;
+    font-size: 1.3em;
+    font-weight: 300;
+}
+.barchart-legend {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+/* label classes for bar chart floorplan. Assigned randomly in JS but manually match here */
+.label-basement {
+    background-color: #9467bd;
+    float: left;
+    margin: 5px;
+}
+.label-1 {
+    background-color: #1f77b4;
+    float: left;
+    margin: 5px;
+}
+.label-2 {
+    background-color: #aec7e8;
+    float: left;
+    margin: 5px;
+}
+.label-3 {
+    background-color: #ff7f0e;
+    float: left;
+    margin: 5px;
+}
+.label-4 {
+    background-color: #ffbb78;
+    float: left;
+    margin: 5px;
+}
+.label-5 {
+    background-color: #2ca02c;
+    float: left;
+    margin: 5px;
+}
+.label-6 {
+    background-color: #98DF8A;
+    float: left;
+    margin: 5px;
+}
+.label-7 {
+    background-color: #D62728;
+    float: left;
+    margin: 5px;
+}
+.label-8 {
+    background-color: #FF9896;
+    float: left;
+    margin: 5px;
+}
+
+@media screen and (max-width: 1150px) {
+    #results-barchart {
+        transform: scale(0.85) translateX(-80px);
+    }
+}
+@media screen and (max-width: 964px) {
+    #results-barchart {
+        transform: scale(0.8) translateX(-120px);
+    }
+}
